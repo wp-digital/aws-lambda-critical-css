@@ -1,0 +1,38 @@
+{
+  "name": "aws-lambda-critical-css",
+  "version": "0.0.1",
+  "description": "AWS Lambda function for critical CSS generating.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "node-lambda setup",
+    "run": "node-lambda run",
+    "deploy": "node-lambda deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redink-no/aws-lambda-critical-css.git"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "critical",
+    "css",
+    "wp",
+    "wordpress",
+    "stylesheets"
+  ],
+  "author": "Viktor Kuliebiakin <kuliebiakin@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/redink-no/aws-lambda-critical-css/issues"
+  },
+  "homepage": "https://github.com/redink-no/aws-lambda-critical-css#readme",
+  "devDependencies": {
+    "node-lambda": "^0.11.3"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.106.0",
+    "penthouse": "^0.11.13"
+  }
+}
