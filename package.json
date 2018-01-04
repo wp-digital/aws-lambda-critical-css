@@ -4,6 +4,8 @@
   "description": "AWS Lambda function for critical CSS generating.",
   "main": "index.js",
   "scripts": {
+    "package": "npm run package-prepare && cp index.js build && cp -r setup build && cp chrome/headless_shell.tar.gz build && cd build && zip -rq ../wordpress_critical_css-production.zip .",
+    "package-prepare": "cp -r package.json build && cd build && PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install --production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "node-lambda setup",
     "run": "node-lambda run",
@@ -29,11 +31,13 @@
   },
   "homepage": "https://github.com/redink-no/aws-lambda-critical-css#readme",
   "devDependencies": {
-    "node-lambda": "^0.11.4"
+    "node-lambda": "^0.11.5"
   },
   "dependencies": {
     "clean-css": "^4.1.9",
+    "form-data": "^2.3.1",
     "node-fetch": "^1.7.3",
-    "penthouse": "^1.1.2"
+    "penthouse": "^1.3.0",
+    "tar": "^4.2.0"
   }
 }

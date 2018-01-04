@@ -1,6 +1,8 @@
 let penthouse = require('penthouse');
 let fetch = require('node-fetch');
 let CleanCSS = require('clean-css');
+let FormData = require('form-data');
+let setup = require('./setup');
 
 exports.handler = ({
     key,
@@ -13,14 +15,34 @@ exports.handler = ({
     .then(responses => Promise.all(responses.map(res => res.text())))
     .then(cssStrings => penthouse({
         url,
-        cssString: cssStrings.join(' ')
+        cssString: cssStrings.join(' '),
+        puppeteer: {
+            getBrowser: setup.getBrowser
+        }
     }))
-    .then(criticalCss => fetch(return_url, {
-        method: `POST`,
-        body: [
-            `key=${key}`,
-            `hash=${hash}`,
-            `stylesheet=${new CleanCSS().minify(criticalCss).styles}`,
-            `secret=${process.env.hasOwnProperty(site_key) ? process.env[site_key] : ''}`
-        ].join('&')
-    }));
+    .then(criticalCss => {
+        let body = new FormData();
+        let data = {
+            key,
+            hash,
+            stylesheet: new CleanCSS().minify(criticalCss).styles,
+            secret: process.env.hasOwnProperty(site_key) ? process.env[site_key] : ''
+        };
+
+        Object.keys(data)
+            .forEach(key => body.append(key, data[key]));
+
+        return fetch(return_url, {
+            method: 'POST',
+            body
+        });
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error(response.statusText);
+        }
+    })
+    .then(response => callback(null, response))
+    .catch(error => callback(error));
