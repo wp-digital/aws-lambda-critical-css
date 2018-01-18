@@ -41,8 +41,15 @@ exports.handler = ({
         if (response.ok) {
             return response.json();
         } else {
-            throw new Error(response.statusText);
+            let error = new Error(response.statusText);
+
+            error.response = response;
+
+            throw error;
         }
     })
     .then(response => callback(null, response))
-    .catch(error => callback(error));
+    .catch(({
+        response
+    }) => response.json())
+    .then(error => error && error.message && callback(error.message));
