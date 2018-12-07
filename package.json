@@ -31,13 +31,13 @@
   },
   "homepage": "https://github.com/redink-no/aws-lambda-critical-css#readme",
   "devDependencies": {
-    "node-lambda": "^0.11.5"
+    "node-lambda": "^0.11.7"
   },
   "dependencies": {
-    "clean-css": "^4.1.9",
-    "form-data": "^2.3.1",
+    "clean-css": "^4.2.1",
+    "form-data": "^2.3.3",
     "node-fetch": "^1.7.3",
-    "penthouse": "^1.3.0",
-    "tar": "^4.2.0"
+    "penthouse": "^1.10.2",
+    "tar": "^4.4.8"
   }
 }
