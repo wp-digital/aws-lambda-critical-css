@@ -35,9 +35,9 @@
   },
   "dependencies": {
     "clean-css": "^4.2.1",
-    "form-data": "^2.3.3",
+    "form-data": "^2.5.0",
     "node-fetch": "^1.7.3",
-    "penthouse": "^1.10.2",
-    "tar": "^4.4.8"
+    "penthouse": "^1.11.1",
+    "tar": "^4.4.10"
   }
 }
