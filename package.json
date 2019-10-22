@@ -7,7 +7,7 @@
     "package": "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true ./node_modules/.bin/node-lambda package",
     "setup": "./node_modules/.bin/node-lambda setup",
     "run": "./node_modules/.bin/node-lambda run",
-    "deploy": "./node_modules/.bin/node-lambda deploy",
+    "deploy": "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true ./node_modules/.bin/node-lambda deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
