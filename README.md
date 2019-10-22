@@ -39,3 +39,9 @@ Example:
   "site_key": "site"
 }
 ````
+
+### Installation
+
+- See [node-lambda](https://github.com/motdotla/node-lambda) on how to setup, test and deploy function.
+- Requires [chrome-aws-lambda](https://github.com/alixaxel/chrome-aws-lambda#aws-lambda-layer) to setup
+as layer.
