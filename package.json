@@ -1,19 +1,18 @@
 {
   "name": "aws-lambda-critical-css",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "AWS Lambda function for critical CSS generating.",
   "main": "index.js",
   "scripts": {
-    "package": "npm run package-prepare && cp index.js build && cp -r setup build && cp chrome/headless_shell.tar.gz build && cd build && zip -rq ../wordpress_critical_css-production.zip .",
-    "package-prepare": "cp -r package.json build && cd build && PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install --production",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "node-lambda setup",
-    "run": "node-lambda run",
-    "deploy": "node-lambda deploy"
+    "package": "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true ./node_modules/.bin/node-lambda package",
+    "setup": "./node_modules/.bin/node-lambda setup",
+    "run": "./node_modules/.bin/node-lambda run",
+    "deploy": "./node_modules/.bin/node-lambda deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/redink-no/aws-lambda-critical-css.git"
+    "url": "git+https://github.com/innocode-digital/aws-lambda-critical-css.git"
   },
   "keywords": [
     "aws",
@@ -25,19 +24,23 @@
     "stylesheets"
   ],
   "author": "Viktor Kuliebiakin <kuliebiakin@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/redink-no/aws-lambda-critical-css/issues"
+    "url": "https://github.com/innocode-digital/aws-lambda-critical-css/issues"
   },
-  "homepage": "https://github.com/redink-no/aws-lambda-critical-css#readme",
+  "homepage": "https://github.com/innocode-digital/aws-lambda-critical-css#readme",
   "devDependencies": {
-    "node-lambda": "^0.11.7"
+    "chrome-aws-lambda": "^1.20.3",
+    "node-lambda": "^0.14.0",
+    "puppeteer-core": "^1.20.0"
   },
   "dependencies": {
     "clean-css": "^4.2.1",
-    "form-data": "^2.5.0",
-    "node-fetch": "^1.7.3",
-    "penthouse": "^1.11.1",
-    "tar": "^4.4.10"
+    "form-data": "^2.5.1",
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.6.0",
+    "path": "^0.12.7",
+    "penthouse": "^2.2.2",
+    "tar": "^5.0.5"
   }
 }

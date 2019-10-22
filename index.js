@@ -1,8 +1,8 @@
-let penthouse = require('penthouse');
-let fetch = require('node-fetch');
-let CleanCSS = require('clean-css');
-let FormData = require('form-data');
-let setup = require('./setup');
+const penthouse = require('penthouse');
+const fetch = require('node-fetch');
+const CleanCSS = require('clean-css');
+const FormData = require('form-data');
+const chromium = require('chrome-aws-lambda');
 
 exports.handler = ({
     key,
@@ -11,18 +11,24 @@ exports.handler = ({
     hash,
     return_url,
     site_key
-}, context, callback) => Promise.all(styles.map(fetch))
-    .then(responses => Promise.all(responses.map(res => res.text())))
+}, context, callback) => Promise.all(styles.map(style => fetch(style)))
+    .then(responses => Promise.all(responses.map(response => response.text())))
     .then(cssStrings => penthouse({
         url,
         cssString: cssStrings.join(' '),
         puppeteer: {
-            getBrowser: setup.getBrowser
+            getBrowser: () => Promise.resolve(chromium.executablePath)
+                .then(executablePath => chromium.puppeteer.launch({
+                    args: chromium.args,
+                    defaultViewport: chromium.defaultViewport,
+                    executablePath: executablePath,
+                    headless: chromium.headless
+                }))
         }
     }))
     .then(criticalCss => {
-        let body = new FormData();
-        let data = {
+        const body = new FormData();
+        const data = {
             key,
             hash,
             stylesheet: new CleanCSS().minify(criticalCss).styles,
@@ -41,7 +47,7 @@ exports.handler = ({
         if (response.ok) {
             return response.json();
         } else {
-            let error = new Error(response.statusText);
+            const error = new Error(response.statusText);
 
             error.response = response;
 
