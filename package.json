@@ -4,9 +4,9 @@
   "description": "AWS Lambda function for critical CSS generating.",
   "main": "index.js",
   "scripts": {
-    "package": "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true ./node_modules/.bin/node-lambda package",
-    "setup": "./node_modules/.bin/node-lambda setup",
-    "run": "./node_modules/.bin/node-lambda run",
+    "package": "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true node-lambda package",
+    "setup": "node-lambda setup",
+    "run": "node-lambda run",
     "deploy": "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true ./node_modules/.bin/node-lambda deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
