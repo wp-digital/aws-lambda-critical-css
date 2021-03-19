@@ -21,7 +21,7 @@ jobs:
           architecture: 'x64'
 
       - name: Install NPM dependencies
-        run: npm install
+        run: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install
 
       - name: Deploy dev
         if: github.ref == 'refs/heads/dev'
