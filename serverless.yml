@@ -1,0 +1,20 @@
+service: critical-css
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+package:
+  exclude:
+    - README.md
+    - .github/**
+    - .idea/**
+
+functions:
+  processor:
+    handler: handler.processor
+    timeout: 59
+    memorySize: 2048
