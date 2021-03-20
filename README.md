@@ -22,6 +22,11 @@ Event JSON:
 | return_url | `string` | Endpoint where result should be returned. |
 | secret | `string` | Secret to be added to POST callback request. |
 
+#### Notes
+
+- Hash
+- Secret
+
 Example: 
 
 ````
@@ -40,5 +45,9 @@ Example:
 
 ### Installation
 
-- Use this template
-- More to be added soon...
+- **Use this template** from Github.
+- [Create AWS Access Keys](https://www.serverless.com/framework/docs/providers/aws/guide/credentials#creating-aws-access-keys).
+  You can follow [this gist](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8) to create policy.
+- Add **API Key** & **Secret** with **Region** to Github **Repository secrets** into `AWS_ACCESS_KEY_ID`,
+  `AWS_SECRET_ACCESS_KEY` and `AWS_REGION` variables.
+- Deploy function with Github Actions
