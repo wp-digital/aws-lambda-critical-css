@@ -11,18 +11,16 @@ so you just need to install plugin.
 
 ### Basic usage (non WordPress)
 
-Add environment variable. **Key** is how Lambda will identify your site and **Value** is a secret.
-
 Event JSON:
 
 | **Name** | **Type** | **Description** |
 |----------|----------|-----------------|
-| key | `string` | Identifier, it could be a template name |
-| styles | `array`  | List of original CSS files |
-| url | `string` | URL for grabbing critical CSS |
-| hash | `string` | Version hash |
-| return_url | `string` | REST API endpoint where result should be returned |
-| site_key | `string` | Site identifier |
+| key | `string` | Identifier, it could be a template name. |
+| styles | `array`  | List of original CSS files. |
+| url | `string` | URL for grabbing critical CSS. |
+| hash | `string` | Version hash. There is MD5 hash of concatenated string of stylesheet names with version is used in plugin. |
+| return_url | `string` | Endpoint where result should be returned. |
+| secret | `string` | Secret to be added to POST callback request. |
 
 Example: 
 
@@ -31,17 +29,16 @@ Example:
   "key": "single",
   "styles": [
     "https://site.com/css/bootstrap.min.css",
-    "https://site.com/css/screen.min.css"
+    "https://site.com/css/screen.min.css?ver=1.0.0"
   ],
   "url": "https://www.site.com/blog/hello-world/",
   "hash": "a05d2d03525b97379c42ef1525a4a6b9",
   "return_url": "https://site.com/api/v1/stylesheet",
-  "site_key": "site"
+  "secret": "aQ3qnPPnDwhaB7pzI3Y0jQx*"
 }
 ````
 
 ### Installation
 
-- See [node-lambda](https://github.com/motdotla/node-lambda) on how to setup, test and deploy function.
-- Requires [chrome-aws-lambda](https://github.com/alixaxel/chrome-aws-lambda#aws-lambda-layer) to setup
-as layer.
+- Use this template
+- More to be added soon...
