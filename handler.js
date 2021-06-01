@@ -27,6 +27,7 @@ module.exports.processor = async ({
     Object.keys(data)
         .forEach(key => body.append(key, data[key]));
 
+    console.log(returnURL, data, body);
     const response = await fetch(returnURL, {
         method: 'POST',
         body,

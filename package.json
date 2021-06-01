@@ -24,11 +24,11 @@
   },
   "homepage": "https://github.com/innocode-digital/aws-lambda-critical-css#readme",
   "dependencies": {
-    "chrome-aws-lambda": "^8.0.0",
+    "chrome-aws-lambda": "^9.1.0",
     "clean-css": "^5.1.1",
     "form-data": "^4.0.0",
     "node-fetch": "^2.6.1",
     "penthouse": "^2.3.2",
-    "puppeteer-core": "^8.0.0"
+    "puppeteer-core": "^9.1.1"
   }
 }
