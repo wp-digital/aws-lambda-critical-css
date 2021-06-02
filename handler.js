@@ -30,6 +30,7 @@ module.exports.processor = async ({
     const response = await fetch(returnURL, {
         method: 'POST',
         body,
+        insecureHTTPParser: true,
     });
 
     if (!response.ok) {
