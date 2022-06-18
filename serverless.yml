@@ -18,3 +18,5 @@ functions:
     handler: handler.processor
     timeout: 59
     memorySize: 2048
+    maximumEventAge: 600
+    maximumRetryAttempts: 0
