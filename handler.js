@@ -25,6 +25,8 @@ module.exports.processor = async ({
         url,
     };
 
+    console.log(data);
+
     Object.keys(data)
         .forEach(key => {
             try {
