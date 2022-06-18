@@ -22,10 +22,15 @@ module.exports.processor = async ({
         hash,
         stylesheet: minified,
         secret,
+        url,
     };
 
     Object.keys(data)
-        .forEach(key => body.append(key, data[key]));
+        .forEach(key => {
+            try {
+                body.append(key, data[key]);
+            } catch {}
+        });
 
     const response = await fetch(returnURL, {
         method: 'POST',

@@ -7,5 +7,7 @@ module.exports = (url, cssStrings) => penthouse({
     cssString: cssStrings.join(' '),
     puppeteer: {
         getBrowser,
-    }
+    },
+    renderWaitTime: 1000,
+    blockJSRequests: false,
 });

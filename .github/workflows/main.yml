@@ -21,11 +21,11 @@ jobs:
           architecture: 'x64'
 
       - name: Install NPM dependencies
-        run: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install
+        run: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install --only=production
 
       - name: Deploy dev
         if: github.ref == 'refs/heads/dev'
-        uses: serverless/github-action@master
+        uses: serverless/github-action@v2
         with:
           args: deploy --region ${{ secrets.AWS_REGION }}
         env:
@@ -34,7 +34,7 @@ jobs:
 
       - name: Deploy production
         if: github.ref == 'refs/heads/master'
-        uses: serverless/github-action@master
+        uses: serverless/github-action@v2
         with:
           args: deploy --stage production --region ${{ secrets.AWS_REGION }}
         env:
